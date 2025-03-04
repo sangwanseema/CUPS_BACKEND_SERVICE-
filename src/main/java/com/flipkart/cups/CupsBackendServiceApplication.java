@@ -1,6 +1,7 @@
 package com.flipkart.cups;
 
 import com.flipkart.cups.resources.CupsResource;
+import com.flipkart.cups.resources.HealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -53,5 +54,6 @@ public class CupsBackendServiceApplication extends Application<CupsServiceConfig
            enableCors(environment);
         // Register the API resource class (CupsResource) to handle requests
            environment.jersey().register(new CupsResource());
+           environment.jersey().register(new HealthCheck());
     }
 }

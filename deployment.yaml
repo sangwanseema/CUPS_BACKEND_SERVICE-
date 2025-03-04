@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cups-service
+  namespace: cups-dropwizard-ns  # Ensure namespace is correct
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cups-service
+  template:
+    metadata:
+      labels:
+        app: cups-service
+    spec:
+      containers:
+        - name: cups-service
+          image: cups-service:latest
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 8080
